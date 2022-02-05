@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./validacion.js"></script>
+    <title>Front End</title>
+</head>
+
+<body>
+    <h1>Obteniendo elementos HTML para su manipulación</h1>
+    <!-- <form> -->
+    <legend>Formato compra de criptomonedas</legend>
+    <label for="nombre">Nombre</label>
+    <input id="nombre" type="text">
+    <label for="apellidos">Apellidos</label>
+    <input id="apellidos" type="text">
+    <label for="usuario">Usuario</label>
+    <input id="usuario" type="text">
+    <label for="moneda">Moneda a comprar</label>
+    <select name="moneda" id="moneda">
+        <option value="0" selected>Elige una</option>
+        <option value="BTC">Bitcoin</option>
+        <option value="ETH">Ethereum</option>
+        <option value="ADA">Cardano</option>
+        <option value="DASH">Dash</option>
+        <option value="USDT">USD Tether</option>
+    </select>
+    <Label id="label_pago">Escoge tu moneda preferente de pago</Label>
+    <input type="checkbox" name="pago" id="ARS">Pesos Argentinos
+    <input type="checkbox" name="pago" id="MXN">Pesos Mexicanos
+    <input type="checkbox" name="pago" id="USD">Dólar
+    <input type="checkbox" name="pago" id="RBL">Reales Brazileños
+    <input type="checkbox" name="pago" id="COP">Peso Colombiano
+    <label for="comentarios">Comentarios de la compra</label>
+    <textarea id="comentarios"></textarea>
+    <button onclick="validacion()">Comprar</button>
+
+    <!-- </form> -->
+
+    <h2>Historial de Compras</h2>
+    <table>
+        <thead>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Usuario</th>
+            <th>Moneda a Comprar</th>
+            <th>Moneda de Pago</th>
+            <th>Comentarios</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+
+</html>
