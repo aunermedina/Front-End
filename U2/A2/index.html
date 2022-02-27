@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./json.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Front End</title>
+</head>
+
+<body class="bg-light">
+    <main class="container">
+        <div class="row">
+            <div class="col-md-4 m-2 p-3 bg-body rounded shadow-sm">
+                <h5>Nuevo usuario</h5>
+                <div>
+                    <div class="mb-3">
+                        <label for="inputNombre" class="form-label">Nombre</label>
+                        <input type="text" name="inputNombre" id="inputNombre" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">Correo Electronico</label>
+                        <input type="email" name="inputEmail" id="inputEmail" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputUsuario" class="form-label">Usuario</label>
+                        <input type="text" name="inputUsuario" id="inputUsuario" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputContraseña" class="form-label">Contraseña</label>
+                        <input type="password" name="inputContraseña" id="inputContraseña" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary" onclick="crearUsuario()">Crear</button>
+                </div>
+            </div>
+            <div class="col-md-3 m-2 p-3 bg-body rounded shadow-sm">
+                <h5>Cadena en formato JSON</h5>
+                <pre id="resultado"></pre>
+            </div>
+            <div class="col-md-4 m-2 p-3 bg-body rounded shadow-sm">
+                <h5>De JSON a Objecto de Javascript</h5>
+                <div class="mb-3">
+                    <label for="inputJSON" class="form-label">Cadena JSON: </label>
+                    <input type="text" name="inputJSON" id="inputJSON" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary" onclick="convertirJSON()">Convertir</button>
+                <div class="m-3" id="tabla"></div>
+            </div>
+        </div>
+    </main>
+    
+
+</body>
+
+</html>
