@@ -1,4 +1,4 @@
-function validacion() {
+function crearRegistro() {
     var nombre = document.getElementById("nombre");
     var apellidos = document.getElementById("apellidos");
     var usuario = document.getElementById("usuario");
@@ -8,7 +8,7 @@ function validacion() {
     var labelPago = document.getElementById("label_pago");
     var tbody = document.querySelector('tbody');
     var registro = document.createElement('tr');
-    
+    var tHeadCount = null;
 
     if (nombre.value == "" || nombre == null) {
         nombre.style.background = "red";
@@ -21,6 +21,8 @@ function validacion() {
         registro.appendChild(celda);
         nombre.value = null;
     }
+
+
 
     if (apellidos.value == "" || apellidos == null) {
         apellidos.style.background = "red";
@@ -43,7 +45,7 @@ function validacion() {
         var cUser = document.createElement('td');
         cUser.appendChild(vUser);
         registro.appendChild(cUser);
-        usuario.value = null;        
+        usuario.value = null;
     }
 
     if (moneda.value == "0") {
@@ -93,11 +95,65 @@ function validacion() {
         registro.appendChild(cComm);
         comentarios.value = null;
     }
-    
-    var tHeadCount = document.querySelectorAll('th').length;
 
-    if (registro.childElementCount == tHeadCount) {
-        tbody.appendChild(registro);
+    if (!tbody) {
+        crearTabla();
+        tHeadCount = document.querySelectorAll('th').length;
+    } else {
+        tHeadCount = document.querySelectorAll('th').length;
     }
     
+    if (registro.childElementCount == (tHeadCount - 1)) {
+        var tAct = document.createElement("i");
+        tAct.className = "bi bi-trash";
+        tAct.onclick = eliminarFila;
+        var cAct = document.createElement("td");
+        cAct.appendChild(tAct);
+        registro.appendChild(cAct);
+        tbody.appendChild(registro);
+    } 
 }
+
+function eliminarFila() {
+    var tabla = document.getElementById("historial");
+    var numFilas = tabla.rows.length;
+    if (numFilas == 1) {
+        eliminarTabla();
+    } else {
+        var fila = this.parentNode.parentNode;
+        fila.parentNode.removeChild(fila);
+    }
+}
+
+function eliminarTabla() {
+    var tabla = document.getElementById("historial");
+    if (tabla) {
+        document.getElementById("tabla").removeChild(tabla);
+    } else {
+        alert("No hay registros en el historial");
+    }
+}
+
+function crearTabla() {
+    console.log("creando tabla!")
+    let table = document.createElement('table');
+    table.id = "historial";
+    let thead = document.createElement('thead');
+    let tbody = document.createElement('tbody');
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+
+    let headers = ["Nombre", "Apellidos", "Usuario", "Moneda a Comprar", "Moneda de Pago", "Comentarios", "Acción"];
+
+    for (const header of headers) {
+        let vHeader = document.createTextNode(header);
+        let thHeader = document.createElement("th");
+        thHeader.appendChild(vHeader);
+        thead.appendChild(thHeader);
+    }
+
+    document.getElementById("tabla").appendChild(table);
+}
+
+window.onload = crearTabla;
