@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Front End</title>
+</head>
+
+<body class="bg-light">
+    <main class="container">
+        <div class="row">
+            <div class="col-md-5 m-2 p-3 bg-body rounded shadow-sm">
+                <h5>Nuevo Orden de Compra</h5>
+                <div>
+                    <div class="mb-3">
+                        <label class="form-label" for="moneda">Moneda a comprar</label>
+                        <select class="form-select" name="moneda" id="selectMoneda">
+                            <option value="0" selected>Elige una</option>
+                            <option value="BTC">Bitcoin</option>
+                            <option value="ETH">Ethereum</option>
+                            <option value="ADA">Cardano</option>
+                            <option value="DASH">Dash</option>
+                            <option value="USDT">USD Tether</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPrecio" class="form-label">Precio</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" aria-label="cantidad" id="inputPrecio">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputCantidad" class="form-label">Cantidad</label>
+                        <input type="number" name="inputCantidad" id="inputCantidad" class="form-control">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" onclick="crearOrden()">Comprar</button>
+                </div>
+            </div>
+            <div class="col-md-6 m-2 p-3 bg-body rounded shadow-sm">
+                <h5>Historial de Compras</h5>
+                <div id="tabla"></div>
+            </div>
+        </div>
+    </main>
+
+
+</body>
+
+</html>
