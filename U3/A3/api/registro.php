@@ -20,10 +20,10 @@
         $reg_arr = array(
             "id" =>  $item->id,
             "first_name" => $item->first_name,
-            "last_name" => $item->last_name
+            "last_name" => $item->last_name,
             "email" => $item->email,
             "gender" => $item->gender,
-            "ip_address" => $item->ip_address,
+            "ip_address" => $item->ip_address
         );
       
         http_response_code(200);
@@ -32,6 +32,6 @@
       
     else{
         http_response_code(404);
-        echo json_encode("Registro no encontrado.");
+        echo json_encode(array("message" => "Registro no encontrado."));
     }
 ?>

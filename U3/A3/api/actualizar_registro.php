@@ -13,19 +13,17 @@
     
     $item = new Registro($db);
     
-    $data = json_decode(file_get_contents("php://input"));
+    $item->id = isset($_GET['id']) ? $_GET['id'] : die();;
     
-    $item->id = $data->id;
-    
-    $item->first_name = $data->first_name;
-    $item->last_name = $data->last_name;
-    $item->email = $data->email;
-    $item->gender = $data->gender;
-    $item->ip_address = $data->ip_address;
+    $item->first_name = isset($_GET['first_name']) ? $_GET['first_name'] : die();
+    $item->last_name = isset($_GET['last_name']) ? $_GET['last_name'] : die();
+    $item->email = isset($_GET['email']) ? $_GET['email'] : die();
+    $item->gender = isset($_GET['gender']) ? $_GET['gender'] : die();
+    $item->ip_address = isset($_GET['ip_address']) ? $_GET['ip_address'] : die();
     
     if($item->updateRegistro()){
-        echo json_encode("Información del registro actualizada.");
+        echo json_encode(array("message" => "Información del registro actualizada."));
     } else{
-        echo json_encode("Información no pudo ser actualizada.");
+        echo json_encode(array("message" => "Información no pudo ser actualizada."));
     }
 ?>

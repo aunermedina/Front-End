@@ -17,7 +17,12 @@
         }
         // GET ALL
         public function getRegistros(){
-            $sqlQuery = "SELECT * FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT id, 
+            first_name, 
+            last_name, 
+            email, 
+            gender, 
+            ip_address FROM " . $this->db_table . "";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
@@ -130,4 +135,3 @@
             return false;
         }
     }
-?>

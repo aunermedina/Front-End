@@ -13,13 +13,11 @@
     
     $item = new Registro($db);
     
-    $data = json_decode(file_get_contents("php://input"));
-    
-    $item->id = $data->id;
+    $item->id = isset($_GET['id']) ? $_GET['id'] : die();;
     
     if($item->deleteRegistro()){
-        echo json_encode("Registro eliminado.");
+        echo json_encode(array("message" => "Registro eliminado."));
     } else{
-        echo json_encode("Información no pudo ser eliminada.");
+        echo json_encode(array("message" =>"Información no pudo ser eliminada."));
     }
 ?>
