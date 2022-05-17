@@ -23,6 +23,10 @@
 # Support for Project snippet scope
 *.zip
 *.docx
+env
+*.pyc
+
+.idea
 
 env
 
