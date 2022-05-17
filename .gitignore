@@ -23,5 +23,9 @@
 # Support for Project snippet scope
 *.zip
 *.docx
+env
+*.pyc
+
+.idea
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
