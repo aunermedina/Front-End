@@ -125,7 +125,7 @@ function paginacion(valor) {
     }
 
     $('#resultados tbody tr').hide();
-    $('#resultados tbody tr').slice(0, rowsShown).show();
+    $('#resultados tbody tr').slice(0, rowsShown).show("drop");
     $("#datatable_info").append(`<label id="total_registro" class="m-2">Mostrando 1 al ${valor} de ${rowsTotal} registros</label>`);
     $('.pagination li:first').addClass('active');
 
@@ -156,7 +156,7 @@ $(document).on("click", "button#editar", function () {
     document.getElementById("inputGender").value = data.gender;
     document.getElementById("inputIpAddress").value = data.ip_address;
 
-    $("#editarModal").show();
+    $("#editarModal").show("drop");
 })
 
 $(document).on("submit", "#editarRegistro", function () {
