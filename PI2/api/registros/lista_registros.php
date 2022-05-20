@@ -14,6 +14,7 @@
     if($itemCount > 0){
         
         $registroArr = array();
+        $registroArr["itemCount"] = $itemCount;
         $registroArr["data"] = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);

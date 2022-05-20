@@ -11,15 +11,15 @@
     $database = new Database();
     $db = $database->getConnection();
     
-    $item = new Employee($db);
+    $item = new Empleado($db);
     
     $item->name = isset($_GET['name']) ? $_GET['first_name'] : die();
     $item->email = isset($_GET['email']) ? $_GET['email'] : die();
     $item->age = isset($_GET['age']) ? $_GET['age'] : die();
     $item->designation = isset($_GET['designation']) ? $_GET['designation'] : die();
-    $item->created = date('Y-m-d H:i:s');
+    // $item->created = date('Y-m-d H:i:s');
     
-    if($item->updateEmployee()){
+    if($item->updateEmpleado()){
       echo json_encode(array("message" => "Información del empleado actualizada."));
     } else{
         echo json_encode(array("message" => "Información no pudo ser actualizada."));

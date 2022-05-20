@@ -16,18 +16,17 @@ function cargarDatos() {
     // comenzamos cargando los datos del endpoint
     $.ajax({
         type: "GET",
-        url: "http://localhost/fe-pi/api/registros/lista_registros.php",
+        url: "http://localhost/fe-pi/api/empleados/lista_empleados.php",
         dataType: "json",
         success: function (json) {
             document.getElementById("loading").remove();
             $.each(json.data, function (reg) {
                 $("#resultados tbody").append(`<tr>
                 <td>${json.data[reg].id}</td>
-                <td>${json.data[reg].first_name}</td>
-                <td>${json.data[reg].last_name}</td>
+                <td>${json.data[reg].name}</td>
                 <td>${json.data[reg].email}</td>
-                <td>${json.data[reg].gender}</td>
-                <td>${json.data[reg].ip_address}</td>
+                <td>${json.data[reg].age}</td>
+                <td>${json.data[reg].designation}</td>
                 <td><div class="btn-group" role="group" aria-label="Basic example">
                 <button id="editar" data-row='${JSON.stringify(json.data[reg])}' type="button" class="btn btn-primary">Editar</button>
                 <button id="eliminar" data-row="${json.data[reg].id}" type="button" class="btn btn-danger">Eliminar</button>
@@ -149,27 +148,23 @@ function paginacion(valor) {
 
 $(document).on("click", "button#editar", function () {
     const data = $(this).data("row");
-    document.getElementById("idRegistro").value = data.id;
-    document.getElementById("inputFirstName").value = data.first_name;
-    document.getElementById("inputLastName").value = data.last_name;
+    document.getElementById("idEmpleado").value = data.id;
+    document.getElementById("inputName").value = data.name;
+    document.getElementById("inputEdad").value = data.age;
     document.getElementById("inputEmail").value = data.email;
-    document.getElementById("inputGender").value = data.gender;
-    document.getElementById("inputIpAddress").value = data.ip_address;
+    document.getElementById("inputDepto").value = data.designation;
 
     $("#editarModal").show("drop");
 })
 
-$(document).on("submit", "#editarRegistro", function () {
-    var id = document.getElementById("idRegistro").value;
-    var fn = document.getElementById("inputFirstName").value;
-    var ln = document.getElementById("inputLastName").value;
+$(document).on("submit", "#editarEmpleado", function () {
+    var id = document.getElementById("idEmpleado").value;
+    var name = document.getElementById("inputName").value;
+    var age = document.getElementById("inputEdad").value;
     var email = document.getElementById("inputEmail").value;
-    var gender = document.getElementById("inputGender").value;
-    var ip = document.getElementById("inputIpAddress").value;
+    var depto = document.getElementById("inputDepto").value;
 
-    console.log(id, fn, ln, email, gender, ip);
-
-    fetch(`http://localhost/fe-pi/api/registros/actualizar_registro.php?id=${id}&first_name=${fn}&last_name=${ln}&email=${email}&gender=${gender}&ip_address=${ip}`, {
+    fetch(`http://localhost/fe-pi/api/empleados/actualizar_empleado.php?id=${id}&name=${name}&age=${age}&email=${email}&designation=${depto}`, {
         method: "PUT"
     }).then((response) => {
         if (response.ok) {
@@ -186,16 +181,16 @@ $(document).on("submit", "#editarRegistro", function () {
 
 $(document).on("click", "button#eliminar", function () {
     const id = $(this).data("row");
-    if (confirm("¿Está seguro de eliminar el registro?")) {
-        fetch(`http://localhost/fe-pi/api/registros/eliminar_registro.php?id=${id}`, {
+    if (confirm("¿Está seguro de eliminar el empleado?")) {
+        fetch(`http://localhost/fe-pi/api/empleados/eliminar_empleado.php?id=${id}`, {
             method: "DELETE"
         }).then((response) => {
             if (response.ok) {
                 location.reload();
                 return response.json();
             }
-        }).then((data) => {
-            alert(data.message);
+        }).then((res) => {
+            alert(res.message);
         })
     }
 })

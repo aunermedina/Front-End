@@ -15,6 +15,7 @@
     if($itemCount > 0){
         
         $employeeArr = array();
+        $employeeArr["itemCount"] = $itemCount;
         $employeeArr["data"] = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
